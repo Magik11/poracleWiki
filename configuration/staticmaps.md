@@ -65,6 +65,19 @@ When you install the tileserver, remember that Poracle just gets a tile URL
 from it - so the tileserver needs to be accessible (with the same base URL) by
 both Poracle and your users.
 
+### Testing
+
+A standard static map
+
+```
+https://tiles.yourtileserver.com/staticmap/poracle-monster?pokemon_id=3&latitude=48.12&longitude=2.12```
+```
+
+A multi-static map
+```
+https://tiles.yourtileserver.com/multistaticmap/poracle-multi-monster?pokemon_id=3&latitude=48.12&longitude=2.12
+```
+
 ## Google Maps
 
 ### API Key
