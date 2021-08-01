@@ -61,6 +61,9 @@ In your local.json, under the geocoding section set `staticProvider` to `tileser
 You need to copy the templates located in `tileservercache_templates/` into the `Templates/` directory of your Tileserver so
 that Poracle has access to the templates it needs to generate the tiles.
 
+When you install the tileserver, remember that Poracle just gets a tile URL
+from it - so the tileserver needs to be accessible (with the same base URL) by
+both Poracle and your users.
 
 ## Google Maps
 
