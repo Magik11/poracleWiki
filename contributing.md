@@ -7,7 +7,7 @@ layout: default
 # Contributing to PoracleJS
 
 ## I need help
-Best place to get your questions answered is our [Discord](https://discord.gg/WDMr8xX).   
+Best place to get your questions answered is our [Discord](https://discord.gg/AathPCp).   
 Should that not succeed in solving your problem, you're also welcome to [raise an issue on GitHub](https://github.com/KartulUdus/PoracleJS/issues).  
 
 ## How do I get started contributing?
