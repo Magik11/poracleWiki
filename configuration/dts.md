@@ -463,7 +463,7 @@ Any of the fields can be customized with the following:
 |{{{imgUrl}}}| alias for Link to the image of the Pokestop|
 |{{pokestopUrl}}| Link to the image of the Pokestop|
 |{{{staticMap}}}| Static link to map|
-|{{{googleMapUurl}}}| Link to google maps|
+|{{{googleMapUrl}}}| Link to google maps|
 |{{{appleMapUrl}}}| Link to apple maps|
 |{{{wazeMapUrl}}| Link to waze|
 |{{areas}}| Matched geofence area names for alert|
@@ -566,7 +566,7 @@ Possible rewards: {{#compare gruntRewardsList.first.chance '==' 100}}{{#forEach 
 |{{{imgUrl}}}| alias for Link to the image of the Pokestop|
 |{{pokestopUrl}}| Link to the image of the Pokestop|
 |{{{staticMap}}}| Static link to map|
-|{{{googleMapUurl}}}| Link to google maps|
+|{{{googleMapUrl}}}| Link to google maps|
 |{{{appleMapUrl}}}| Link to apple maps|
 |{{{wazeMapUrl}}| Link to waze|
 |{{areas}}| Matched geofence area names for alert|
@@ -623,7 +623,7 @@ Possible rewards: {{#compare gruntRewardsList.first.chance '==' 100}}{{#forEach 
 |{{now}}| Current Timestamp|
 |{{{imgUrl}}}| Link to pokemon image|
 |{{{staticMap}}}| Static link to map|
-|{{{googleMapUurl}}}| Link to google maps|
+|{{{googleMapUrl}}}| Link to google maps|
 |{{{appleMapUrl}}}| Link to apple maps|
 |{{{wazeMapUrl}}| Link to waze|
 |{{areas}}| Matched geofence area names for alert|
