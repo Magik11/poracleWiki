@@ -23,7 +23,7 @@ Get your **token** by using the "click to reveal" button in the App Bot User sec
 
 ![](assets/Screen%20Shot%202017-12-07%20at%2002.12.19.png)
 
-You need to tick the 'server member intents' for Poracle's role checking to work
+You need to tick the 'server member intents' and 'presence intents' for Poracle's role checking to work
 
 ![](assets/discord-bot-server-members-intent.png)
 
