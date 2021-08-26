@@ -31,7 +31,7 @@ If PoracleJS connects to the database locally, you can give it only local access
    ```sql
    CREATE DATABASE poracle;
    CREATE USER 'poracleuser'@'localhost' IDENTIFIED BY 'poraclePassword';
-   GRANT ALL PRIVILEGES ON poracle . * TO 'poracle'@'localhost';
+   GRANT ALL PRIVILEGES ON poracle . * TO 'poracleuser'@'localhost';
    exit
    ```
    
@@ -39,7 +39,7 @@ Alternatively, you can grant your user access from anywhere. This allows for rem
    ```sql
    CREATE DATABASE poracle;
    CREATE USER 'poracleuser'@'%' IDENTIFIED BY 'poraclePassword';
-   GRANT ALL PRIVILEGES ON poracle . * TO 'poracle'@'%';
+   GRANT ALL PRIVILEGES ON poracle . * TO 'poracleuser'@'%';
    exit
    ```
 
