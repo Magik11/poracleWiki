@@ -222,8 +222,9 @@ Any of the fields can be customized with the following:
 |{{typeName}}|Type of pokemon (localised)|
 |{{emojiString}}|Emoji of pokemon type|
 
+```
 {{name}}{{#if form}}{{#isnt formname 'Normal'}} {{formname}}{{/isnt}}{{/if}}
-
+```
 
 ### Raid alarms
 
