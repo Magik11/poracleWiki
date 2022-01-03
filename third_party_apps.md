@@ -11,15 +11,6 @@ Third Party apps used to enhance the functionality of PorcaleJS
 
 * Host your own tileserver to generate static maps. 
 
-## [TileServer Middleman](https://github.com/ccev/tileserver-middleman)
-- show nearby stops/gyms on staticmaps
-- hosts staticmaps on discord's cdn: faster loading & hiding your url
-- supports templates, post/get requests, json input, url arg input, multistaticmaps - basically any kind of input your tileserver would also accept
-
-## [PVP Helper](https://github.com/crhbetz/mp-poraclePvpHelper)
-- This MAD plugin exists to pass RDM-like PvP data to PoracleJS using webhooks. 
-- It targets the PvP Stats Tracking.
-
 ## [Nominatim](https://github.com/mediagis/nominatim-docker)
 * Provide a local installation of a geolocation (address) lookup 
 
@@ -36,6 +27,10 @@ Third Party apps used to enhance the functionality of PorcaleJS
 
 * Detailed grafana stats for your poracle installation!
 
+## [ReactMap](https://github.com/WatWowMap/ReactMap)
+
+* Super fast map supporting MAD and RDM - with built in Poracle support
+
 ## Geofence designers
 
 * http://geo.jasparke.net/
@@ -48,6 +43,20 @@ Third Party apps used to enhance the functionality of PorcaleJS
 
 * [Unicode surrogate pair calculator](http://www.russellcottrell.com/greek/utilities/SurrogatePairCalculator.htm)
 
+## Old links
+
+These are projects that are no longer supported by their authors
+
+## [TileServer Middleman](https://github.com/ccev/tileserver-middleman)
+- show nearby stops/gyms on staticmaps
+- hosts staticmaps on discord's cdn: faster loading & hiding your url
+- supports templates, post/get requests, json input, url arg input, multistaticmaps - basically any kind of input your tileserver would also accept
+- similar functionality is now in Poracle
+
+## [PVP Helper](https://github.com/crhbetz/mp-poraclePvpHelper)
+- This MAD plugin exists to pass RDM-like PvP data to PoracleJS using webhooks.
+- It targets the PvP Stats Tracking.
+- Poracle now has an 'internal' PVP calculator so this project is no longer required
 
 
 
