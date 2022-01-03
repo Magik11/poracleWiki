@@ -10,7 +10,7 @@ In this section we will discuss how to perform a manual installation. Some requi
 
 ## Prerequisites
 PoracleJS requires several prerequisites to operate. The following prerequisites must be installed for PoracleJS to function properly.
- * [NodeJS](https://nodejs.org/en/). The supported versions are 12.x and 14.x.
+ * [NodeJS](https://nodejs.org/en/). Poracle requires Node 16.x
  * [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
  * A databases is required for PoracleJS to operate properly. Only one needs to be configured for PoracleJS to operate correctly.
     * [MariaDB](https://www.digitalocean.com/community/tutorials/how-to-install-mariadb-on-ubuntu-20-04)

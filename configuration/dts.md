@@ -50,7 +50,9 @@ The `type` can be one of the following
 The `platform` should be one of **discord** or **telegram**.
 Language is used under multi-lingual configuration to support different 
 templates for each language. If you have just a single language just make sure
-this matches your configured locale.
+this matches your configured locale, or leave the language entry out. Poracle will match
+DTS entries with matching language in preference to no-language, but then fall back to ones with
+no-language.
 
 The `id` is the template id. When a user or administrator sets up a new
 alarm, the default id is set - which is usually '1' (this can be changed
@@ -61,12 +63,12 @@ can't be matched exactly.
 
 ## dts.json
 
-## Discord
+### Discord
 A useful visualizer can be found [HERE](https://leovoel.github.io/embed-visualizer/) 
 
 TODO: insert picture of an alert explaining sections
 
-## Telegram
+### Telegram
 
 ```json
     "template": {
@@ -81,6 +83,7 @@ TODO: insert picture of an alert explaining sections
 | sticker | This is a URL for a telegram sticker that will be included ahead of the message |
 | location | true/false - whether to include a telegram map |
 | webpage_preview | true/false - whether to provide previews of embedded URL elements |
+| send_order | can vary the order of the messages poracle sends |
 
 Since handlebars was originally designed for use on web pages, when you use a field
 eg {{name}} it will encode characters that need special treatment on web pages - eg
@@ -88,6 +91,12 @@ eg {{name}} it will encode characters that need special treatment on web pages -
 
 Sometimes it's necessary to use three curly braces on each side. This avoids url encoding for fields that need an url. You can do all kinds of fancy handlebar magic, read more about that [HERE][https://github.com/helpers/handlebars-helpers].
 
+By default, Poracle sends messages in the order `sticker`, `text`, `location`.  You can
+override this by using the `send_order` option:
+
+```json
+      "send_order": ["sticker","location","text"]
+```
 
 ### Monster alarms
 
@@ -133,98 +142,142 @@ For monsters without IV information, you can specify a different message.
 
 Any of the fields can be customized with the following:
 
-| Option        | Value         | 
-|---------------|:-------------|
-|{{pokemonId}} {{id}}| Pokemon Id |
-|{{name}}| Pokemon name (localised)|
-|{{nameEng}}| Name of pokemon (english)
-|{{encounterId}}| The encounter id from the scanner |
-|{{generation}}| Generation number of pokemon |
-|{{formName}}| Monsters form (localised)|
-|{{formNameEng}}| Monsters form (english)|
-|{{formId}}| Form id|
-|{{time}}| Disappear time|
-|{{tthh}}| Full hours until hidden|
-|{{tthm}}| Full minutes until hidden|
-|{{tths}}| Full seconds until hidden|
-|{{confirmedTime}}| True/False if disappear timestamp is verified|
-|{{#if confirmedTime}}Verified{{else}}Not verified{{/if}}| Example verified|
-|{{now}}| Current Timestamp|
-|{{latitude}}| Latitude of the alerted location|
-|{{longitude}}| Longitude of the alerted location|
-|{{addr}}| String ddress of the alerted location|
-|{{streetNumber}}| Street number of the alerted location|
-|{{streetName}}| Street name of the alerted location|
-|{{zipcode}}| Zip code of the alerted location|
-|{{country}}| Country of the alerted location|
-|{{countryCode}}| 2 letter country code of the alerted location|
-|{{city}}| City name of the alerted location|
-|{{state}}| State name of the alerted location|
-|{{stateCode}}| 2 letter state code of the alerted location|
-|{{neighbourhood}}| Neighbourhood of the alerted location|
-|{{quickMoveId}}| Monsters quick move (alt: {{moveName move_1}} )|
-|{{quickMoveName}} | Monster's quick move name (localised)|
-|{{quickMoveNameEng}} | Monster's quick move name (english)|
-|{{quickMoveEmoji}} | Monster's quick move emoji|
-|{{chargeMoveId}}| Charge move id|
-|{{chargeMoveName}}| Monsters charge move (localised)|
-|{{chargeMoveNameEng}}| Monsters charge move (english)|
-|{{iv}}| Monsters Individual Value Precentage (2sp)|
-|{{ivColor}}| Color code that reflects this IV|
-|{{cp}}| Monsters CP|
-|{{genderData.name}}| Monsters gender |
-|{{genderData.emoji}}| Monsters gender emoji|
-|{{gender}}|Gender id number; 0 = unset, 1 = male, 2 = female, 3 = genderless|
-|{{weight}}| Monsters weight in kg|
-|{{height}}| Monster's height|
-|{{level}}| Monsters level|
-|{{atk}}| Monsters attack|
-|{{def}}| Monsters defense|
-|{{sta}}| Monsters stamina|
-|{{{staticMap}}}| Static link to map|
-|{{{googleMapUrl}}}|Link to google maps search of the location|
-|{{{appleMapUrl}}}||
-|{{{waveMapUrl}}}||
-|{{{imgUrl}}}| Link to monsters picture|
-|{{{stickerUrl}}| Link to monsters sticker|
-|{{color}}| Color to be used for embed (Color of monsters primary type)|
-|{{ivColor}}| Color to be used for embed (Color of monsters perfection based on config.discord.iv_colors)|
-|{{flag}}|Country flag emoji for location|
-|{{areas}}| Matched geofence area names for alert|
-|matched| Matched areas (array)|
-|weatherCurrent||
-|alteringWeathers||
-|weatherChangeTime|Time weather will change|
-|boosted|Is Pokemon weather boosted?|
-|boostWeather||
-|boostWeatherName|Name of weather boost|
-|boostWeatherEmoji|Emoji of weather boost|
-|gameWeather||
-|gameWeatherName|Current game weather name|
-|gameWeatherEmoji|Current game weather emoji|
-|weatherChange|Weaher change text indicating possible weather change|
-|weatherCurrentName|Current weather name if there is a forecast change|
-|weatherCurrentEmoji||
-|weatherNextName|Name of next weather if there is a forecast change|
-|weatherNextEmoji|Emoji of next weather if there is a forecast change|
-|bestGreatLeagueRank||
-|bestGreatLeagueRankCP||
-|bestUltraLeagueRank||
-|bestUltraLeagueRankCP||
-|pvpDisplayMaxRank||
-|pvpDisplayGreatMinCP||
-|pvpDisplayUltraMinCP||
-|{{catchBase}}|Catch base %age|
-|{{catchGreat}}|Catch great ball %age|
-|{{catchUltra}}|Catch ultra ball %age|
-|{{rarityNameEng}|Rarity of pokemon (english)|
-|{{rarityName}}|Rarity of pokemon (localised)|
-|{{typeName}}|Type of pokemon (localised)|
-|{{emojiString}}|Emoji of pokemon type|
+| Option                 | Value                                                                                                  | 
+|------------------------|:-------------------------------------------------------------------------------------------------------|
+| {{pokemonId}} {{id}}   | Pokemon Id                                                                                             |
+| {{name}}               | Pokemon name (localised)                                                                               |
+| {{nameEng}}            | Name of pokemon (english)                                                                              |
+| {{disguisePokemonName}} | Name of pokemon disguise (if ditto)|
+| {{encounterId}}        | The encounter id from the scanner                                                                      |
+| {{generation}}         | generation number                                                                                      |
+| {{generationName}}     | generation name (translated, Eng version available)                                                    |
+| {{generationNameEng}}  | generation name (English)                                                                              |
+| {{generationRoman}}    | roman numeral version (eg I, II, III)                                                                  |
+| {{formName}}           | Monsters form (localised)                                                                              |
+| {{formNameEng}}        | Monsters form (english)                                                                                |
+| {{formId}}             | Form id                                                                                                |
+| {{time}}               | Disappear time                                                                                         |
+| {{tthh}}               | Full hours until hidden                                                                                |
+| {{tthm}}               | Full minutes until hidden                                                                              |
+| {{tths}}               | Full seconds until hidden                                                                              |
+| {{confirmedTime}}      | True/False if disappear timestamp is verified.                                                         |
+| {{now}}                | Current Timestamp                                                                                      |
+| {{latitude}}           | Latitude of the alerted location                                                                       |
+| {{longitude}}          | Longitude of the alerted location                                                                      |
+| {{addr}}               | String ddress of the alerted location                                                                  |
+| {{streetNumber}}       | Street number of the alerted location                                                                  |
+| {{streetName}}         | Street name of the alerted location                                                                    |
+| {{zipcode}}            | Zip code of the alerted location                                                                       |
+| {{country}}            | Country of the alerted location                                                                        |
+| {{countryCode}}        | 2 letter country code of the alerted location                                                          |
+| {{city}}               | City name of the alerted location                                                                      |
+| {{state}}              | State name of the alerted location                                                                     |
+| {{stateCode}}          | 2 letter state code of the alerted location                                                            |
+| {{neighbourhood}}      | Neighbourhood of the alerted location                                                                  |
+| {{quickMoveId}}        | Monsters quick move (alt: {{moveName move_1}} )                                                        |
+| {{quickMoveName}}      | Monster's quick move name (localised)                                                                  |
+| {{quickMoveNameEng}}   | Monster's quick move name (english)                                                                    |
+| {{quickMoveEmoji}}     | Monster's quick move emoji                                                                             |
+| {{chargeMoveId}}       | Charge move id                                                                                         |
+| {{chargeMoveName}}     | Monsters charge move (localised)                                                                       |
+| {{chargeMoveNameEng}}  | Monsters charge move (english)                                                                         |
+| {{iv}}                 | Monsters Individual Value Precentage (2sp)                                                             |
+| {{ivColor}}            | Color code that reflects this IV                                                                       |
+| {{cp}}                 | Monsters CP                                                                                            |
+| {{genderData.name}}    | Monsters gender                                                                                        |
+| {{genderData.emoji}}   | Monsters gender emoji                                                                                  |
+| {{gender}}             | Gender id number; 0 = unset, 1 = male, 2 = female, 3 = genderless                                      |
+| {{weight}}             | Monsters weight in kg                                                                                  |
+| {{height}}             | Monster's height                                                                                       |
+| {{level}}              | Monsters level                                                                                         |
+| {{atk}}                | Monsters attack                                                                                        |
+| {{def}}                | Monsters defense                                                                                       |
+| {{sta}}                | Monsters stamina                                                                                       |
+| {{{staticMap}}}        | Static link to map                                                                                     |
+| {{{googleMapUrl}}}     | Link to google maps search of the location                                                             |
+| {{{appleMapUrl}}}      ||                                                                                             |
+| {{{waveMapUrl}}}       ||                                                                                             |
+| {{{imgUrl}}}           | Link to monsters picture                                                                               |
+| {{{stickerUrl}}        | Link to monsters sticker                                                                               |
+| {{color}}              | Color to be used for embed (Color of monsters primary type)                                            |
+| {{ivColor}}            | Color to be used for embed (Color of monsters perfection based on config.discord.iv_colors)            |
+| {{flag}}               | Country flag emoji for location                                                                        |
+| {{areas}}              | Matched geofence area names for alert                                                                  |
+| matched                | Matched areas (array)                                                                                  |
+| weatherCurrent         ||                                                                                             |
+| alteringWeathers       ||                                                                                             |
+| weatherChangeTime      | Time weather will change                                                                               |
+| boosted                | Is Pokemon weather boosted?                                                                            |
+| boostWeather           |                                                                                                        |
+| boostWeatherName       | Name of weather boost                                                                                  |
+| boostWeatherEmoji      | Emoji of weather boost                                                                                 |
+| gameWeather            |                                                                                                        |
+| gameWeatherName        | Current game weather name                                                                              |
+| gameWeatherEmoji       | Current game weather emoji                                                                             |
+| weatherChange          | Weaher change text indicating possible weather change                                                  |
+| weatherCurrentName     | Current weather name if there is a forecast change                                                     |
+| weatherCurrentEmoji    | Emoji for current weather                                                                              |                                                                                             |
+| weatherNextName        | Name of next weather if there is a forecast change                                                     |
+| weatherNextEmoji       | Emoji of next weather if there is a forecast change                                                    |
+| bestGreatLeagueRank    ||                                                                                             |
+| bestGreatLeagueRankCP  ||                                                                                             |
+| bestUltraLeagueRank    ||                                                                                             |
+| bestUltraLeagueRankCP  ||                                                                                             |
+| pvpDisplayMaxRank      ||                                                                                             |
+| pvpDisplayGreatMinCP   ||                                                                                             |
+| pvpDisplayUltraMinCP   ||                                                                                             |
+| {{catchBase}}          | Catch base %age                                                                                        |
+| {{catchGreat}}         | Catch great ball %age                                                                                  |
+| {{catchUltra}}         | Catch ultra ball %age                                                                                  |
+| {{rarityNameEng}       | Rarity of pokemon (english)                                                                            |
+| {{rarityName}}         | Rarity of pokemon (localised)                                                                          |
+| {{typeName}}           | Type of pokemon (localised)                                                                            |
+| {{emojiString}}        | Emoji of pokemon type                                                                                  |
+| {{shinyPossible}}      | true/false Whether this pokemon is shiny possible                                                      |
+| {{shinyPossibleEmoji}} | An emoji indicating whether shiny is possible                                                          |
 
+Some examples:
 ```
 {{name}}{{#if form}}{{#isnt formname 'Normal'}} {{formname}}{{/isnt}}{{/if}}
 ```
+
+```
+{{#if confirmedTime}}Verified{{else}}Not verified{{/if}}`
+```
+
+```
+{{name}}{{#if disguisePokemonName}} (disguised as {{disguisePokemonName}}){{/if}}
+```
+#### PVP 
+
+```
+{{#if pvpLittle}}**Little league:**\n
+{{#each pvpLittle}}- {{this.fullName}} #{{this.rank}} @{{this.cp}}CP (Lvl. {{this.level}})\n
+{{/each}}{{/if}}{{#if pvpGreat}}**Great league:**\n
+{{#each pvpGreat}} - {{this.fullName}} #{{this.rank}} @{{this.cp}}CP (Lvl. {{this.level}})\n
+{{/each}}{{/if}}{{#if pvpUltra}}**Ultra League:**\n
+{{#each pvpUltra}} - {{this.fullName}} #{{this.rank}} @{{this.cp}}CP (Lvl. {{this.level}})\n
+{{/each}}{{/if}}
+```
+
+These fields can be used inside a PVP loop:
+
+| field        | description                                                                     |
+|--------------|---------------------------------------------------------------------------------|
+| fullName     | a full name including form (and mega)                                           |
+| fullNameEng  | english version                                                                 |
+| rank         ||
+| level        ||
+| cap          | (the cap of this entry, eg 50 or 51)                                            |
+| levelWithCap | a combination field (eg 50/50) showing level and cap if the mon is not 'capped' |
+| formId       |
+| pokemonId    |
+| evolution    | true/false (whether this is a mega or not)                                      |
+| cp           |
+| percentage   | (2dp)                                                                           |
+| monsterName  | - just the pokemon name                                                         |
+| formName     | - just the form name                                                            |
+| baseStats    | - for quick use of calculateCp                                                  |
 
 ### Raid alarms
 

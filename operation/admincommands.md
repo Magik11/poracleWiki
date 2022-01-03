@@ -27,6 +27,8 @@ The userlist can be filtered by passing one or more of these parameters:
 |group|Groups only|
 |user|Users only|
 
+You can also use userlist to show users belonging to a particular community.
+
 # backup, restore
 
 # community

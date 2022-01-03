@@ -100,24 +100,22 @@ Thats the section about the PoracleJS listener. It's the endpoint where you send
 
 ## Discord
 
-| Option        | Value         | 
-| ------------- |---------------|
-| enabled | Enables Discord support |
-| checkRole | Enables a rolecheck to automatically unregister left members |
-| checkRoleInterval | Interval in hours when to check users |
-| unknownResponse | Unused option |
-| invite | Unused option |
-| token | Array of Discord bottokens. Use multiple to balance the load of messages|
-| guilds | Array of Discord servers to check the members of |
-| channels | Array of channel IDs where users can register in |
-| userRole | Array of role IDs where users are automatically registered with |
-| admins | Array of IDs of administrators |
-| prefix | Symbol to use as command prefix |
-| limitSec | Timerange in seconds where `limitAmount` is applied | 
-| limitAmount | Amount of allowed messages in defined timerange |
-| ivColors | Array of hexcolors |
-| dmLogChannelID | Channel ID for user command logging |
-| dmLogChannelDeletionTime| Time in minutes after which the logged user commands are deleted |
+| Option        | Value                                                                                                                                            | 
+| ------------- |--------------------------------------------------------------------------------------------------------------------------------------------------|
+| enabled | Enables Discord support                                                                                                                          |
+| checkRole | Enables a rolecheck to automatically unregister left members                                                                                     |
+| checkRoleInterval | Interval in hours when to check users                                                                                                            |
+| unknownResponse | Unused option                                                                                                                                    |
+| invite | Unused option                                                                                                                                    |
+| token | Array of Discord bottokens. In the past you might have used multiple to balance the load of messages, but today you should just use a single bot |
+| guilds | Array of Discord servers to check the members of                                                                                                 |
+| channels | Array of channel IDs where users can register in                                                                                                 |
+| userRole | Array of role IDs where users are automatically registered with                                                                                  |
+| admins | Array of IDs of administrators                                                                                                                   |
+| prefix | Symbol to use as command prefix                                                                                                                  |
+| ivColors | Array of hexcolors                                                                                                                               |
+| dmLogChannelID | Channel ID for user command logging                                                                                                              |
+| dmLogChannelDeletionTime| Time in minutes after which the logged user commands are deleted                                                                                 |
 
 ### IV colors
 

@@ -34,9 +34,23 @@ If you don't have a webhook created already, poracle can add one using the `!web
 registers the channel for receiving webhooks. By default the name with be the name of the
 channel but - you can specify an alternative name using `name` as with channel add above.
   
-# Custom Emoticons
+# Command Security
 
-<insert text here>
+The command security section allows you to specify who can access certain functions
+
+```json
+    // commandSecurity - list commands and users/roles that can execute these commands. If not specified no
+    // security is enforced for a command
+    // Valid permissions that be restricted: monster, pvp, gym, invasion, lure, nest, ...
+    // eg:
+    //   "commandSecurity": {
+    //      "monster": [ "userid", "roleid" ],
+    //      "pvp": [ "roleid" ]
+    //   }
+      "commandSecurity": {
+
+      },
+```
 
 # Channel auto creation
 

@@ -18,44 +18,67 @@ Wrap in `<S<` and `>S>` for Poracle to pass the URL through a shortener
 
 ### Changing discord emoticons
 
-First you'll need to add your custom emoji to your server. I just found mine by searching in google. Then you need to find the ID of each emoji. Yours will be different ID to mine.
-
-Custom emotes are represented as formatted text, similar to how mentions are just formatted text.  The format is
-`<:name:id>` Example `<:bug:236227272899902>` is a custom emoji named `bug` with the id `236227272899902`.
-
-You can get a custom emoji ID by right clicking the custom emoji and copying its URL, with the ID being the
-image filename.
-
-Example translation file:
+First you'll need to add your custom emoji to your server. You can file `emoji.json` which
+poracle will use to look up emoji.  
 
 ```json
 {
-    "🐛":"<:bug:yourid>",
-    "🌑":"<:dark:yourid>",
-    "🐲":"<:dragon:yourid>",
-    "⚡":"<:electric:yourid>",
-    "🦋":"<:fairy:yourid>",
-    "👊":"<:fighting:yourid>",
-    "🔥":"<:fire:yourid>",
-    "🐦":"<:flying:yourid>",
-    "👻":"<:ghost:yourid>",
-    "🌿":"<:grass:yourid>",
-    "⛰️":"<:ground:yourid>",
-    "❄":"<:ice:yourid>",
-    "⭕":"<:normal:yourid>",
-    "☠":"<:poison:yourid>",
-    "🔮":"<:psychic:yourid>",
-    "🗿":"<:rock:yourid>",
-    "🔩":"<:steel:yourid>",
-    "💧":"<:water:yourid>"
+  "discord": {
+    "type-grass":"<:poracle_type_grass:yourid>",
+    "type-poison":"<:poracle_type_poison:yourid>",
+    "type-fire":"<:poracle_type_fire:yourid>",
+    "type-flying":"<:poracle_type_flying:yourid>",
+    "type-water":"<:poracle_type_water:yourid>",
+    "type-bug":"<:poracle_type_bug:yourid>",
+    "type-normal":"<:poracle_type_normal:yourid>",
+    "type-dark":"<:poracle_type_dark:yourid>",
+    "type-electric":"<:poracle_type_electric:yourid>",
+    "type-rock":"<:poracle_type_rock:yourid>",
+    "type-ground":"<:poracle_type_ground:yourid>",
+    "type-fairy":"<:poracle_type_fairy:yourid>",
+    "type-fighting":"<:poracle_type_fighting:yourid>",
+    "type-psychic":"<:poracle_type_psychic:yourid>",
+    "type-steel":"<:poracle_type_steel:yourid>",
+    "type-ice":"<:poracle_type_ice:yourid>",
+    "type-ghost":"<:poracle_type_ghost:yourid>",
+    "type-dragon":"<:poracle_type_dragon:yourid>",
+    "weather-sunny":"<:poracle_weather_sunny:yourid>",
+    "weather-rain":"<:poracle_weather_rain:yourid>",
+    "weather-partly-cloudy":"<:poracle_weather_partly_cloudy:yourid>",
+    "weather-cloudy":"<:poracle_weather_cloudy:yourid>",
+    "weather-windy":"<:poracle_weather_windy:yourid>",
+    "weather-snow":"<:poracle_weather_snow:yourid>",
+    "weather-fog":"<:poracle_weather_fog:yourid>",
+    "lure-normal":"<:poracle_lure_normal:yourid>",
+    "lure-glacial":"<:poracle_lure_glacial:yourid>",
+    "lure-mossy":"<:poracle_lure_mossy:yourid>",
+    "lure-magnetic":"<:poracle_lure_magnetic:yourid>",
+    "lure-rainy":"<:poracle_lure_rainy:yourid>",
+    "team-mystic":"<:poracle_team_mystic:yourid>",
+    "team-valor":"<:poracle_team_valor:yourid>",
+    "team-instinct":"<:poracle_team_instinct:yourid>",
+  }
 }
+
 ```
+
+Poracle can upload some emoji for you from your UICONS repository, and give you an example
+emoji.json
+
+```
+!poracle-emoji upload - to upload emojis (skipping those already on server)
+!poracle-emoji upload overwrite - to upload overwrite emojis
+!poracle-emoji - to get a list of poracle emojis in poracle emoji.json format
+```
+
+You need to run this from a server channel or specify `guild123456' as a parameter
 
 The bot can use emojis of any server it's invited to. So as long as your bot is on each server you can just have the emoji added to just one server.
 
-This approach does cause a problem if you parallel run with Telegram because these translations are system-wide.
-
 ### PVP Scanner
+
+Poracle can calculate PVP values itself, if you set it to the 'internal' calculator. The default
+is to obtain PVP data from webhooks, which are provided by RDM but not by MAD.
 
 ### Facebook
 
