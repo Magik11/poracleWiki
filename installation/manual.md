@@ -60,7 +60,7 @@ We should never install software or run programs as `root`. This is a security h
 node -v
 ```
 
-This should return either node 12 or node 14.
+This should return node 16.
 
 ### Installation
 1. Ensure you are running as the correct user. If not, switch to that account with `su <username>`. An example would be `su pogo` to switch the account `pogo`.
@@ -94,7 +94,7 @@ git pull
 There are a few services that allow for easy management of a process. The easiest to use is [pm2](https://pm2.keymetrics.io/). Since we never added the user `pogo` to sudoers we will be unable to run that command. If that is the case, exit back out to root and run the command. Once installed switch back to the user created for running PoracleJS. Utilizing pm2 for auto-startup requires running the following commands:
 ```bash
 npm install pm2 -g
-pm2 start src/app.js --name poracle 
+pm2 start poracle.js --name poracle 
 ```
 
 The following commands are useful for pm2
