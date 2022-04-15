@@ -89,3 +89,13 @@ Create default-0.json in config folder containing
 * Raid/Egg: Gym, Message End, Pokemon ID
 * Incident: Pokestop ID, IncidentExpiration
 * Quest: Pokestop ID, Rewards
+
+# Links for spoofing apps
+
+These partials can be used for spoofing apps:
+
+```json
+ "Velocity": "http://pk.md/{{latitude}},{{longitude}}",
+ "iPogo": "https://ipogo.app/?coords={{latitude}},{{longitude}}",
+ "iTools":  "https://assets.thinkskysoft.com/discord/jump.html?type=itoolsbt&latlng={{latitude}},{{longitude}}"
+```
