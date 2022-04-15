@@ -34,6 +34,20 @@ If you don't have a webhook created already, poracle can add one using the `!web
 registers the channel for receiving webhooks. By default the name with be the name of the
 channel but - you can specify an alternative name using `name` as with channel add above.
   
+# Overriding bot name & image for webhooks
+
+You can specify a `username` and `avatar_url` to override the bot name and image; but this only
+works for webhooks
+
+```json
+  "platform": "discord",
+  "template": {
+    "username": "{{name}}",
+    "avatar_url": "{{{imgUrl}}}",
+    "embed": {
+
+```
+
 # Command Security
 
 The command security section allows you to specify who can access certain functions
