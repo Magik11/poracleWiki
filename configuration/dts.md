@@ -174,6 +174,9 @@ Any of the fields can be customized with the following:
 | {{state}}              | State name of the alerted location                                                                     |
 | {{stateCode}}          | 2 letter state code of the alerted location                                                            |
 | {{neighbourhood}}      | Neighbourhood of the alerted location                                                                  |
+| {{distance}}           | Distance in metres from the set position to the alerted location                                       |
+| {{bearing}}            | Bearing from the set position to the alerted location                                                  |
+| {{bearingEmoji}}       | Bearing emoji from the set position to the alerted location                                            |
 | {{quickMoveId}}        | Monsters quick move (alt: {{moveName move_1}} )                                                        |
 | {{quickMoveName}}      | Monster's quick move name (localised)                                                                  |
 | {{quickMoveNameEng}}   | Monster's quick move name (english)                                                                    |
