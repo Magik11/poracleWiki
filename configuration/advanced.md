@@ -56,7 +56,7 @@ poracle will use to look up emoji.
     "lure-rainy":"<:poracle_lure_rainy:yourid>",
     "team-mystic":"<:poracle_team_mystic:yourid>",
     "team-valor":"<:poracle_team_valor:yourid>",
-    "team-instinct":"<:poracle_team_instinct:yourid>",
+    "team-instinct":"<:poracle_team_instinct:yourid>"
   }
 }
 
