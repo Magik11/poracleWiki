@@ -207,7 +207,7 @@ Available filters:
 
 | Filter    | Example                        | More words  |
 | --------- |:------------------------------:| -----------:|
-|all types|`!invasion `| tracks any invasions within your area|
+|all types|`!invasion everyhing`| tracks any invasions within your area|
 |(typeName or mixed)|`!invasion mixed fire water rock ground`| tracks invasions of specific type within your area. Any of the 18 types are possible + the mixed type that is invasions where the typing is unknown/random|
 |d|`!invasion d50`| Tracks invasions within 50 meters of set location|
 |female or male|`!invasion female`| Tracks only female or male invasions|
