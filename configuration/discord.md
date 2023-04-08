@@ -69,7 +69,7 @@ The command security section allows you to specify who can access certain functi
 # Channel auto creation
 
 The `!autocreate` command can create a category and channels for your new area automatically.  Create a file channelTemplate.json in your config directory (example in defaults) with a definition.  Configurable fields can be use starting with {0} which can be used for whatever you want - area, language, etc.
-Poracle can register the channels (or leave as text only), or create a webhook and set that up.  It can also create or search and use roles by name to make your category and/or channels private, or public with special role priveldges.
+Poracle can register the channels (or leave as text/voice only), or create a webhook and set that up.  It can also create or search and use roles by name to make your category and/or channels private, or public with special role priveldges.
 Poracle needs to know the guild to work on; so if you execute it in a channel it can work this out or specify with the guild.
 
 Example commands:
@@ -81,8 +81,9 @@ Notes:
 - If you have multiple roles with the same name, the lowest one will be used. The best use case for this is unique area/role names.
 - Excluding controlType will create a channel not registered to Poracle with the settings specified
 - Any or all of the permissions listed can be set true, false or removed entirely. Think of it as ❌`/`✔️ in the permissions window.
-- All currently available permissions are shown in the first example. If more are needed make a request, the full range is available but only 'user' ones were added
+- All currently available permissions are shown in the first example. Soundboard will be added on next Discord.js update (v9 API req)
 - @everyone set as shown will create the category/channel as 'private' with the lock symbol. You can manipulate it like any other role as well
+- I don't think registering Voice channels or creating webhooks for them is a thing (or a good idea) so don't use any `"controlType"` with `"channelType": voice`
 - Channels with no roles array will inherit permissions from the category. Also, the entire category key/object can be excluded to make free floating channels. Removing the roles array from either category or channel will create generic channels with your server defaults
 
 ```json
@@ -96,18 +97,38 @@ Notes:
           {
             "name":"{0}",
             "view": true,
+            // Text
             "viewHistory": true,
             "send": false,
             "react": true,
             "pingEveryone": false,
             "embedLinks": false,
             "attachFiles": false,
+            "sendTTS": false,
             "externalEmoji": false,
             "externalStickers": false,
             "createPublicThreads": false,
             "createPrivateThreads": false,
             "sendThreads": false,
-            "slash": false
+            "slashCommands": false,
+            // Voice
+            "connect": false,
+            "speak": false,
+            "autoMic": false,
+            "stream": false,
+            "vcActivities": false,
+            "prioritySpeaker": false,
+            // Admin
+            "createInvite": false,
+            "channels": false,
+            "messages": false,
+            "roles": false,
+            "webhooks": false,
+            "threads": false,
+            "events": false,
+            "mute": false,
+            "deafen": false,
+            "move": false
           },
           {
             "name":"@everyone",
@@ -118,6 +139,8 @@ Notes:
       "channels":[
         {
           "channelName":"{0}-chatroom",
+          "channelType":"text",
+          "topic": "Chat for {0} users",
           "roles":[
             {
               "name":"{0}",
@@ -138,11 +161,16 @@ Notes:
               "name":"@everyone",
               "view": false
             }
-          ],
-          "topic": "Chat for {0} users"
+          ]
+        },
+        {
+          "channelName":"{0}-voicechat",
+          "channelType":"voice",
+          "topic": "Voice for {0}"
         },
         {
           "channelName":"{0}-iv100",
+          "channelType":"text",
           "topic": "Hundos for {0}",
           "controlType":"bot",
           "commands":[
@@ -152,6 +180,7 @@ Notes:
         },
         {
           "channelName":"{0}-UltraRares",
+          "channelType":"text",
           "controlType":"webhook",
           "commands":[
             "area add {0}",
@@ -160,6 +189,7 @@ Notes:
         },
         {
           "channelName":"{0}-Raids",
+          "channelType":"text",
           "controlType":"webhook",
           "commands":[
             "area add {0}",
