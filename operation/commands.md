@@ -186,7 +186,7 @@ Available filters:
 
 | Filter    | Example                        | More words  |
 | --------- |:------------------------------:| -----------:|
-|all pokemon|`!quest all pokemon`| tracks quests for all pokemon rewards within your area|
+|all_pokemon|`!quest all_pokemon`| tracks quests for all pokemon rewards within your area|
 |gen|`!quest gen5`| tracks quests for all gen5 pokemon rewards within your area|
 |all items|`!quest all items`| tracks quests for all item rewards within your area|
 |d|`!quest snorlax d50`| Tracks Snorlax awarding quests within 50 meters of set location|
@@ -195,7 +195,7 @@ Available filters:
 
 ### !quest remove
 
-`!quest remove all pokemon pinap berry stardust`  
+`!quest remove all_pokemon pinap berry stardust`  
 Removes quest tracking for all pokemon, pinap berries and strdust.
 
 ### !invasion
