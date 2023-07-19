@@ -69,31 +69,108 @@ The command security section allows you to specify who can access certain functi
 # Channel auto creation
 
 The `!autocreate` command can create a category and channels for your new area automatically.  Create a file channelTemplate.json in your config directory (example in defaults) with a definition.  Configurable fields can be use starting with {0} which can be used for whatever you want - area, language, etc.
-Poracle can register the channels (or leave as text only), or create a webhook and set that up.  It can also provide some basic role settings (thanks petap0w!)
+Poracle can register the channels (or leave as text/voice only), or create a webhook and set that up.  It can also create or search and use roles by name to make your category and/or channels private, or public with special role priveldges.
 Poracle needs to know the guild to work on; so if you execute it in a channel it can work this out or specify with the guild.
+
 Example commands:
 
-* `!autocreate newSection newyork` - would execute the below with {0} being newyork
-* `!autocreate guild123456 newSection newyork french` - would execute the below on guild id 123456 with {0} being newyork and {1} being french (although this is not used in the example)
+* `!autocreate newSection "new york"` - would execute the below with {0} being newyork. Use this in the guild you are adding to.
+* `!autocreate guild1234567890 newSection "new york" manhattan` - would execute the below on guild id 1234567890 with {0} being new york and {1} being manhattan. Use this in a DM or another guilds channel.
 
-Note that as soon as you use roleIds this template becomes guild specific so careful use of this feature is needed if poracle is in multiple guilds (see petap0ws comment below on how it can be used)
+Notes:
+- If you have multiple roles with the same name, the lowest one will be used. The best use case for this is unique area/role names.
+- Excluding controlType will create a channel not registered to Poracle with the settings specified
+- Any or all of the permissions listed can be set true, false or removed entirely. Think of it as ❌`/`✔️ in the permissions window.
+- All currently available permissions are shown in the first example. Soundboard will be added on next Discord.js update (v9 API req)
+- @everyone set as shown will create the category/channel as 'private' with the lock symbol. You can manipulate it like any other role as well
+- I don't think registering Voice channels or creating webhooks for them is a thing (or a good idea) so don't use any `"controlType"` with `"channelType": voice`
+- Channels with no roles array will inherit permissions from the category. Also, the entire category key/object can be excluded to make free floating channels. Removing the roles array from either category or channel will create generic channels with your server defaults
 
 ```json
 [
   {
     "name":"newSection",
     "definition":{
-      "category":"{0} Pokemon",
+      "category":{
+        "categoryName":"{0} Pokemon",
+        "roles":[
+          {
+            "name":"{0}",
+            "view": true,
+            // Text
+            "viewHistory": true,
+            "send": false,
+            "react": true,
+            "pingEveryone": false,
+            "embedLinks": false,
+            "attachFiles": false,
+            "sendTTS": false,
+            "externalEmoji": false,
+            "externalStickers": false,
+            "createPublicThreads": false,
+            "createPrivateThreads": false,
+            "sendThreads": false,
+            "slashCommands": false,
+            // Voice
+            "connect": false,
+            "speak": false,
+            "autoMic": false,
+            "stream": false,
+            "vcActivities": false,
+            "prioritySpeaker": false,
+            // Admin
+            "createInvite": false,
+            "channels": false,
+            "messages": false,
+            "roles": false,
+            "webhooks": false,
+            "threads": false,
+            "events": false,
+            "mute": false,
+            "deafen": false,
+            "move": false
+          },
+          {
+            "name":"@everyone",
+            "view": false
+          }
+        ]
+      },
       "channels":[
         {
-          "channelName":"{0}-iv100",
-/*
+          "channelName":"{0}-chatroom",
+          "channelType":"text",
+          "topic": "Chat for {0} users",
           "roles":[
             {
-              "id":"11111111111111111", "view": true, "viewHistory": true, "send": true, "react": true
+              "name":"{0}",
+              "view": true,
+              "viewHistory": true,
+              "send": true,
+              "react": true,
+              "externalEmoji": true
+            },
+            {
+              "name":"{1}",
+              "view": true,
+              "viewHistory": true,
+              "send": false,
+              "react": true
+            },
+            {
+              "name":"@everyone",
+              "view": false
             }
-          ],
-*/
+          ]
+        },
+        {
+          "channelName":"{0}-voicechat",
+          "channelType":"voice",
+          "topic": "Voice for {0}"
+        },
+        {
+          "channelName":"{0}-iv100",
+          "channelType":"text",
           "topic": "Hundos for {0}",
           "controlType":"bot",
           "commands":[
@@ -103,6 +180,7 @@ Note that as soon as you use roleIds this template becomes guild specific so car
         },
         {
           "channelName":"{0}-UltraRares",
+          "channelType":"text",
           "controlType":"webhook",
           "commands":[
             "area add {0}",
@@ -111,6 +189,7 @@ Note that as soon as you use roleIds this template becomes guild specific so car
         },
         {
           "channelName":"{0}-Raids",
+          "channelType":"text",
           "controlType":"webhook",
           "commands":[
             "area add {0}",
