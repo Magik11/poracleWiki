@@ -21,6 +21,7 @@ of -1 in filtering decisions - specifiying a minimum iv of 0 (ie iv0) will exclu
 |maxweight  |`!track rattata maxweight2410`   | Tracks "tiny" rattata (2410 grams and lower)|
 |male       |`!track rattata male`            | Tracks male rattata |
 |female     |`!track pikachu female`          | Tracks female pikachu |
+|size:[xxl|xxs]     |`!track pikachu size:xxl`          | Tracks xxl pikachu |
 |everything |`!track everything iv90 level20` | Tracks eveything with a minimum IV of 90% level 20 and higher. |
 |type|`!track dragon` | Track dragon type pokemon
 |gen |`!track everything gen6 iv60`<br>`!track dark gen3 iv90` | *gen* is a filter so needs to be specified alongside 'everything' or types lists of pokemon. Tracks gen 6 pokemon with a minimum IV of 60% level 15 and higher. |
