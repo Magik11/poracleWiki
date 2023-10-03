@@ -20,6 +20,9 @@ Command | Description
 **!tracked** | Display a summary of everything you are currently tracking
 **!stop** | Stop sending me messages - if you have tracked too much this can be a good way to stop Poracle spamming you!
 **!start** | Start sending messages again
+**!info** | Display details for a given collection, such as rarity, items, or Pokemon
+**!profile** | Start sending messages again
+**!script** | Start sending messages again
 
 Poracle will temporarily stop sending you notifications if you receive too many over a short period of time.  If you
 do this repeatedly then it will stop sending you any notifications at all. Usually you can fix your tracking and
