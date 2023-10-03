@@ -17,9 +17,9 @@ This document provides details on the use of the !track command for Poracle. The
 # Command Options
 | Filter    | Example                         | Description  |
 |----------|-------------------------------|------------|
-|           |`!track pikachu`<br>`!track 2 3 4`| Command used with no filters. This tracks the specified Pokémon within the area you are tracking in (see !area). Tracking of Pokémon can be by name (e.g. Pikachu) or Pokédex number (e.g. 2). Ranges don't function for Pokémon numbers. For example `!track 2-4` will not work. You can use + to designate evolutions of the target Pokémon. For example: `!track 2+` would track Ivysaur and Venusaur. You can use Pokémon names with + as well. + will not function with !untrack |
-|d          |`!track pikachu d750`             | Filter to track Pokémon within meters of your set location (see !location). This example tracks Pikachu within 750 meters |
-|iv         |`!track pikachu iv90`             | Filter for IV% of Pokémon. This example tracks Pikachu within the area you are tracking (see !area) with a minimum IV of 90%. To set a maximum, use the range format, such as `!track pikachu iv90-99` |
+|           |`!track pikachu`<br>`!track 2 3 4`| Command used with no filters. This tracks the specified Pokémon within the area you are tracking in (see `!area` in [Options](options.md)). Tracking of Pokémon can be by name (e.g. Pikachu) or Pokédex number (e.g. 2). Ranges don't function for Pokémon numbers. For example `!track 2-4` will not work. You can use + to designate evolutions of the target Pokémon. For example: `!track 2+` would track Ivysaur and Venusaur. You can use Pokémon names with + as well. + will not function with !untrack |
+|d          |`!track pikachu d750`             | Filter to track Pokémon within meters of your set location (see `!location` in [Options](options.md)). This example tracks Pikachu within 750 meters |
+|iv         |`!track pikachu iv90`             | Filter for IV% of Pokémon. This example tracks Pikachu within the area you are tracking (see `!area` in [Options](options.md)) with a minimum IV of 90%. To set a maximum, use the range format, such as `!track pikachu iv90-99` |
 |[male\|female\|genderless]|`!track rattata male`            | Filter for gender. This example tracks male Rattata |
 |size:[xl\|xxl\|xs\|xxs]|`!track pikachu size:xxl`| Used to track Pokémon of XXL or XXS size. This example would track XXL Pikachu. To set a maximum, use the range format, such as `!track magikarp size:xxs-xs` |
 |everything |`!track everything iv90 level20`  | Everything is a special name that includes all Pokémon. Using *everything* will not modify existing individual entries; rather, this will apply to all entries globally. Individual entry configurations overrule the *everything* entry. This example would track eveything with a minimum IV of 90% level 20 and higher |
@@ -29,7 +29,7 @@ This document provides details on the use of the !track command for Poracle. The
 |[atk\|def\|sta]|`!track larvitar pupitar tyranitar atk15` | Filter for minimum individual values. This example would track Larvitar family with 15 attack and anything for the other 2 IVs. To set a maximum, use the range format, such as `!track medicham meditite atk0-5 def13-15 sta13-15` |
 |level      |`!track everything level:35`      | Filter for Pokémon level. This example tracks everything that is level 35 and higher. To set a maximum, use the range format, such as `!track everything level:20-35` |
 |cp         |`!track slaking cp3000`           | Filter for minimum CP. This example tracks Slaking with a minimum CP of 3000. To set a maximum, use the range format, such as `!track gligar cp:0-1500` |
-|form       |`!track growlithe formhisuian`    | Filter to apply to the specified Pokémon. See #forms |
+|form       |`!track growlithe formhisuian`    | Filter to apply to the specified Pokémon. See [Forms](forms.md) |
 |t          |`!track pikachu t600`             | Filter for minimum time left before despawn measured in seconds. This example tracks Pokémon with 10 minutes left |
 |rarity     |`!track rarity:6`                 | Minimum rarity (1-6) or common, uncommon, rare, very-rare, ultra-rare, unseen. To set a maximum, use the range format, such as `!track rarity:4-6` |
 |clean      |                                  | Delete alarm after it expires |
