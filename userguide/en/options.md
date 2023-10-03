@@ -20,9 +20,7 @@ Command | Description
 **!tracked** | Display a summary of everything you are currently tracking
 **!stop** | Stop sending me messages - if you have tracked too much this can be a good way to stop Poracle spamming you!
 **!start** | Start sending messages again
-**!info** | Display details for a given collection, such as rarity, items, or Pokemon
-**!profile** | Start sending messages again
-**!script** | Start sending messages again
+**!info** | Display details for a given collection, such as rarity, items, or Pokémon
 
 Poracle will temporarily stop sending you notifications if you receive too many over a short period of time.  If you
 do this repeatedly then it will stop sending you any notifications at all. Usually you can fix your tracking and
@@ -38,7 +36,7 @@ When you first start to use poracle, it is sensible to use the pre-defined areas
 ### Tracking by areas
 
 **`!area list`** will show you a list of all the areas that are available to you.  You can add tracking in these
-areas using **`!area add`** and remove them with **`area remove`**.  You can see the areas, and every other detail
+areas using **`!area add`** and remove them with **`!area remove`**.  You can see the areas, and every other detail
 about your tracking using `!tracked`
 
 The area command helpfully can show you the extent of an area using the `!area show` command.
@@ -67,44 +65,42 @@ Metres | Fast | Moderate | Easy Walk
 4000   |   28  |    40    |     50
 5000   |   35  |    50    |     63
 
-**`/tracked`**  
-shows the current filtering settings, followed by specifications on the location, the selected areas and all filters referring to anything from [Pokémon](#pokémon) to [Rocket/Invasion](#rocketinvasion).
+**`!tracked`**  
+Shows the current filtering settings, followed by specifications on the location, the selected areas and all filters referring to anything from [Pokémon](#pokémon) to [Rocket/Invasion](#rocketinvasion).
 
 ## Things you can be notified about!
 
 ## Pokémon
 
-There are a lot of options for filtering your alerts to get the pokemon you want.  The [Track](track.md) page contains all the detail, this just describes the
+There are a lot of options for filtering your alerts to get the Pokémon you want.  The [Track](track.md) page contains all the detail, this just describes the
 basics.
 
-**`/track pikachu d1000 iv20`**
+Let's deconstruct this command.
+**`!track pikachu d1000 iv20`**
 
-**`/track`**  
+**`!track`**  
 All commands to receive Pokémon notifications start with "!track". Using "!untrack [...]", you can remove the respective commands again. 
 
 **`pikachu`**  
-This part of the command indicates which Pokémon the command refers to. It is possible to name one or more Pokémon using their Pokédex numbers or name (multiple languages are supported if your
-Poracle is configured for this), separated by space. You can track all Pokémon using "everything".
-You can track all Pokemon of a particular type - eg `!track dark` and filter pokemon using a generation - eg `!track everything gen1` or `!track dragon gen3`
+This part of the command indicates which Pokémon the command refers to. It is possible to name one or more Pokémon using their Pokédex numbers or name (multiple languages are supported if your Poracle is configured for this), separated by space. You can track all Pokémon using "everything". You can track all Pokémon of a particular type - eg `!track dark` and filter Pokémon using a generation - eg `!track everything gen1` or `!track dragon gen3`.
 
 **`d1000`**  
-If you do not specify a *'d' (distance) filter, then the areas you have selected using the !area command will be used to filter these alerts.
-If you do specify a distance, then you will be notified if a pokemon falls within the area around your location.
+If you do not specify a *'d' (distance) filter, then the areas you have selected using the !area command will be used to filter these alerts. If you do specify a distance, then you will be notified if a Pokémon falls within the area around your location.
 
-You can see what a particular distance radius looks like for you by doing eg `!area show d1000`
+You can see what a particular distance radius looks like for you by doing `!area show d1000`, for example.
 
 **`iv20`**  
-"ivX" indicates the minimum IVs the Pokémon must have to warrant a notification. If you do not set an "ivX", then no minimum will be used.  
-There are other options including "maxivX" indicates the maximum IVs a Pokémon may have to warrant a notification. An iv of -1 is used
-when the IV is not known, so in this case specifying a minimum iv of 0 may be advisable too.
+"iv##" indicates the minimum IVs the Pokémon must have to warrant a notification. If you do not set an "iv##", then no minimum will be used. There are other options including "maxiv##" (deprecated) indicates the maximum IVs a Pokémon may have to warrant a notification. An iv of -1 is used when the IV is not known, so in this case specifying a minimum iv of 0 may be advisable too. See [Track](track.md) for more details.
 
 Examples:  
 **`!track pikachu iv100`** - sends notifications for all Pikachu with 100 IV. 
 **`!track pikachu iv0 maxiv0`** - sends notifications for all Pikachu with 0 IV.  
 **`!track pikachu miniv50 maxiv60`** - sends notifications for all Pikachu with IVs between 50% and 60%.
+**`!track pikachu iv50-60`** - same as above, but uses range notation
 
-**Note:** IV specifications will be rounded to whole numbers. A Pokémon classified as IV98 actually has 44 of 45 possible IV points (15atk,15def,15sta), which are 97.77% mathematically.  
-Since, IV97.77 should not be included in the IV range 98 you would be best filtering for IV97 to capture all IV98 Pokemon.
+**Note:** IV specifications will be rounded to whole numbers. A Pokémon classified as IV98 actually has 44 of 45 possible IV points (15atk,15def,15sta), which are 97.77% mathematically. Since, IV97.77 should not be included in the IV range 98 you would be best filtering for IV97 to capture all IV98 Pokémon.
+
+Also note that `iv100` and `iv:100` are the same filter and using the colon may help process non-English language commands better.
 
 You can specify more filters (eg levels, atk, def, sta) - see [Track](track.md) for more details.
 
@@ -116,16 +112,18 @@ For example, you could use two commands to receive notifications for Pokémon wi
 Important: to check if a !track command works as intended, use the command **`!tracked`** whenever you need to. This way, the bot will show you all filter settings it is currently using. 
 
 ## Quests
-All quest commands start with **`/!quest`** and can be removed again using **`!quest remove`**. Quest commands work within areas or distances as described above.
+All quest commands start with **`!quest`** and can be removed again using **`!quest remove`**. Quest commands work within areas or distances as described above.
 
 ### Pokémon
-**`/quest Pikachu`** - sends notifications for all quests with Pikachu as a reward. 
+**`!quest Pikachu`** - sends notifications for all quests with Pikachu as a reward. 
 
 ### Items  
-**`/quest everything`** - sends notifications for all quests.
-**`/quest all_items`** - sends notifications for all item reward quests.
-**`/quest all_pokemon`** - sends notifications for all pokemon reward quests.
-**`/quest rare_candy`** - sends notifications for all quests with rare candy as a reward.  
+**`!quest everything`** - sends notifications for all quests.
+**`!quest all_items`** - sends notifications for all item reward quests.
+**`!quest all_pokemon`** - sends notifications for all Pokémon reward quests.
+**`!quest rare_candy`** - sends notifications for all quests with rare candy as a reward.  
+
+Use `!info items` to get an up-to-date list of avaialble items. The table below may not be up-to-date.
 
 | Written Command | Item Name |   
 |:-----------|:-------------|  
@@ -205,8 +203,8 @@ Included is information on the location of the grunt, their quote, and their gen
 
 Since the workers never actively engage in a Rocket battle, they do not know exactly which Pokémon will be the reward. Consequently, you cannot filter for specific Pokémon in Poracle, but only for type and gender.
 
-All invasion-commands start with */invasion*. 
-You can remove all filtering settings for invasions using **`/invasion remove everything`**. 
+All invasion-commands start with *!invasion*. 
+You can remove all filtering settings for invasions using **`!invasion remove everything`**. 
 
 **`!invasion everything`** - sends notifications for all invaded Stops. 
 
@@ -244,13 +242,13 @@ Additionally, you can filter by all 16 available Pokémon types and gender.
 |decoy|Tracks for decoy grunts|
 |mixed|Tracks for invasions with a mixed type |
 
-*Note:* You can combine several filters/types. E.g.: **`/invasion fire water ice male`** - tracks all male invasions with either a fire type, water type, or ice type Pokémon as a reward.
+*Note:* You can combine several filters/types. E.g.: **`!invasion fire water ice male`** - tracks all male invasions with either a fire type, water type, or ice type Pokémon as a reward.
 
 ### Lures
 
 Track when lures have been placed on pokestops
 
-eg: **`/lure mossy`**
+eg: **`!lure mossy`**
 
 |normal|
 |magnetic|
@@ -260,3 +258,10 @@ eg: **`/lure mossy`**
 ### Nests
 
 If your administrator has configured it, ...
+
+## Advanced
+
+Command | Description
+--- | ---
+**!profile** | Create and update a profile for your tracked settings
+**!script** | *Documentation pending*
