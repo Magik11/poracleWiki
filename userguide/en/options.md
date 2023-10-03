@@ -263,5 +263,5 @@ If your administrator has configured it, ...
 
 Command | Description
 --- | ---
-**!profile** | Create and update a profile for your tracked settings
+**!profile** | Create and update a profile for your tracked settings. See [Profiles](profiles.md).
 **!script** | *Documentation pending*
