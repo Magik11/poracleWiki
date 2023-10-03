@@ -9,6 +9,8 @@ grand_parent: User Guide
 # Special Form_Names
 Some Pokémon in the game have multiple forms. Those forms all have the same Pokémon name, but can be filtered separately. E.g. **`/track Exeggutor`** sends notifications for both forms of Exeggutor, Alola and normal (Kanto). However, you can also track only the normal form using **`/track Exeggutor formnormal`**.
 
+Note that you may use a colon (:) in between the form parameter and the target form, such as `form:alolan`.
+
 | Written Command | Pokémon Form |   
 | :-----------|:-------------|  
 |"FormNormal"| Sends notifications only for the basic form of the Pokémon  |  
