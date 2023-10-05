@@ -130,5 +130,9 @@ Include all of the times that you want the profile to become active. In this cas
 
 `!profile settime weekday13:00 weekday21:00 weekend20:00`
 
-## Go back to your home profile to get notifications
+## Go back to your home profile
 `!profile home`
+
+Now we want our home profile to become active when we finish our commute home, which we'll say is by 5:30 PM. We'll set the time to 5:10 so that some time after that it will become active.
+
+`!profile settime weekday17:10 weekend07:40`
