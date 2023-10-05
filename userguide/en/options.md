@@ -57,7 +57,7 @@ Once you have specified your location you will then be able to a distance marker
 
 How far/fast can you walk? Here is a guide from the internet (so it must be true!)
 
-Metres | Fast | Moderate | Easy Walk
+Meters | Fast | Moderate | Easy Walk
 ---|---|---|---
 1000   |   7   |    10    |     13
 2000   |   14  |    20    |     25
