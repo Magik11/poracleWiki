@@ -15,6 +15,7 @@ This document provides details on the use of the !track command for Poracle. The
 * Using a colon (:) in some filters is optional, but helps with non-English language processing.
 
 # Command Options
+
 | Filter    | Example                         | Description  |
 |----------|-------------------------------|------------|
 |           |`!track pikachu`<br>`!track 2 3 4`| Command used with no filters. This tracks the specified Pokémon within the area you are tracking in (see `!area` in [Options](options.md)). Tracking of Pokémon can be by name (e.g. Pikachu) or Pokédex number (e.g. 2). Ranges don't function for Pokémon numbers. For example `!track 2-4` will not work. You can use + to designate evolutions of the target Pokémon. For example: `!track 2+` would track Ivysaur and Venusaur. You can use Pokémon names with + as well. + will not function with !untrack |
