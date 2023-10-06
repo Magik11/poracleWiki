@@ -51,7 +51,17 @@ These commands are used to help find Pokémon that are useful in the Go Battle L
 * If you track a Bulbasaur, it will show the ranks for evolutions (e.g. Ivysaur), but that tracking rule won't make it track Venusaur itself (i.e. a wild spawn).
 * You can directly track an evolution, like Ivysaur, and matching Bulbasaur will be found
 
-An example notification containing PVP information - you can see what this Eevee can become in Great and Ultra leagues in all its various forms. In the alert the display contains all the evolutions, if their rank/CP match.
+An example notification containing PVP information - you can see what this Nidoran can become in Great and Little leagues in all its various forms. In the alert the display contains all the evolutions, if their rank/CP match.
+
+Nidoran♀ 60.0% (0/14/13)<br>
+Ends: 9:39:44 AM (18m 45s)<br>
+CP: 353 | IV: 60.0% | Level: 18<br>
+Size: M | Types: ☠<br>
+Moveset: Poison Sting/Sludge Bomb<br>
+Little:<br>
+#1 Nidoran♀ @500CP (Lvl. 25.5/50)<br>
+Great:<br>
+#6 Nidoqueen @1498CP (Lvl. 23/50)<br>
 
 In this example, the Drilbur itself is going to have a CP of 1500 for Great League, but its evolution will not fit into this league
 
